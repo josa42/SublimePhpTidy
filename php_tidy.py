@@ -49,7 +49,7 @@ class PhpTidyCommand(sublime_plugin.TextCommand):
             bufferContent = self.view.substr(bufferLength).encode('utf-8')
 
             # write tmpfile
-            fileHandle = open ( tmpfile, 'w' ) 
+            fileHandle = open ( tmpfile, 'wb' ) 
             fileHandle.write ( bufferContent ) 
             fileHandle.close() 
             print('PhpTidy: buffer written to tmpfile: %s' % (tmpfile))
@@ -103,4 +103,4 @@ class PhpTidyCommand(sublime_plugin.TextCommand):
         panel.end_edit(edit)
 
     def fixup(self, string):
-        return re.sub(r'\r\n|\r', '\n', string.decode('utf-8'))
+        return re.sub(r'\r\n|\r', '\n', string)
